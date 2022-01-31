@@ -1,12 +1,11 @@
 <?php
 
-file_put_contents(__DIR__ . '/imbot.log', "\n" . print_r($_REQUEST, 1), FILE_APPEND);
+
 
 if($_REQUEST['event'] != 'ONIMBOTJOINCHAT'){
 
     include($_REQUEST['auth']['domain'] . '.php');
 
-    file_put_contents(__DIR__ . '/imbot.log', "\n" . print_r($_REQUEST, 1), FILE_APPEND);
     
     include('conexao.php');
     

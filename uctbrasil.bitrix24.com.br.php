@@ -4,7 +4,7 @@ $config = array(
 
     'BOT_ID' => '2205',
     'CLIENT_ID' => 'v6sxch44gkh4er2rln7bodfxoly0ywl8',
-    'URL' => 'https://uctbrasil.bitrix24.com.br/rest/977/k956c1cvyfl4390r/',
+    'URL' => 'https://uctbrasil.bitrix24.com.br/rest/977/5lm7ejrd0ing71gv/',
 
     //Uras do sistema
     'URA' => "Bem vindo a UC Technology.%0A%0ASelecione a opção desejada:%0A1 - Comercial%0A2 - Financeiro%0A3 - Suporte Técnico",
@@ -60,7 +60,11 @@ function menu_ura($mensagem = NULL, $atual = NULL, $metodos, $conn, $config)
                 'LEAVE=Y'  . '&',
                 'QUEUE_ID=' . $config['COMERCIAL']
                 
-                ));               
+                ));    
+                
+                $query = "DELETE FROM conversas WHERE CHAT_ID = " . $_REQUEST['data']['PARAMS']['CHAT_ID'];    
+
+                $result = mysqli_query($conn, $query);
 
 
             break;
@@ -86,6 +90,10 @@ function menu_ura($mensagem = NULL, $atual = NULL, $metodos, $conn, $config)
                 'QUEUE_ID=' . $config['FINANCEIRO']
                 
                 )); 
+
+                $query = "DELETE FROM conversas WHERE CHAT_ID = " . $_REQUEST['data']['PARAMS']['CHAT_ID'];    
+    
+                $result = mysqli_query($conn, $query);
 
 
             break;
@@ -118,6 +126,10 @@ function menu_ura($mensagem = NULL, $atual = NULL, $metodos, $conn, $config)
 
                         ));  
 
+                        $query = "DELETE FROM conversas WHERE CHAT_ID = " . $_REQUEST['data']['PARAMS']['CHAT_ID'];    
+
+                        $result = mysqli_query($conn, $query);
+
                         break;
 
                     case '2':
@@ -141,6 +153,10 @@ function menu_ura($mensagem = NULL, $atual = NULL, $metodos, $conn, $config)
                             'QUEUE_ID=' . $config['TELEFONIA']
 
                         ));  
+
+                        $query = "DELETE FROM conversas WHERE CHAT_ID = " . $_REQUEST['data']['PARAMS']['CHAT_ID'];    
+
+                        $result = mysqli_query($conn, $query);
 
                         break;
 
