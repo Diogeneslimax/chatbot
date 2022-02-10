@@ -1,11 +1,10 @@
 <?php
 
+if($_REQUEST['event'] != 'ONIMBOTJOINCHAT'){    
 
+    if($_REQUEST['data']['PARAMS']['MESSAGE'] != '=== SYSTEM WZ === The client has not installed the app or has linked it to another number.'){
 
-if($_REQUEST['event'] != 'ONIMBOTJOINCHAT'){
-
-    include($_REQUEST['auth']['domain'] . '.php');
-
+        include($_REQUEST['auth']['domain'] . '.php');
     
     include('conexao.php');
     
@@ -42,10 +41,20 @@ if($_REQUEST['event'] != 'ONIMBOTJOINCHAT'){
     
             menu_ura($_REQUEST['data']['PARAMS']['MESSAGE'], $ura[3] , $metodos, $conn, $config);
     
+        }else{
+
+            controler_bot($config['URL'], $metodos['SAIR'], array(
+
+                'BOT_ID=' . $config['BOT_ID'] . '&',                           
+                'CHAT_ID=' . $_REQUEST['data']['PARAMS']['CHAT_ID']
+
+            ));  
+
         }
     
     }
     
+    }
 
 
     
