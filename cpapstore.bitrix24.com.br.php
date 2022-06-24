@@ -7,12 +7,13 @@ $config = array(
     'URL' => 'https://cpapstore.bitrix24.com.br/rest/15/y9vk35dcxej97z3n/',
 
     //Uras do sistema
-    'URA' => "Bem-vindo a central de atendimento da *CPAPSTORE*.%0A%0ADentro de alguns instantes você será atendido. Lembrando que nosso horário de atendimento é de segunda a sexta-feira, das 08:30 as 16:30.%0A%0ASelecione o *número* da opção desejada:%0A*1 - Comercial*%0A*2 - Entrega*%0A*3 - Pós Vendas*",
+    'URA' => "Bem-vindo à central de atendimento da *CPAPSTORE*.%0A%0ADentro de alguns instantes você será atendido. Lembrando que nosso horário de atendimento é de segunda à sexta-feira, das 08:30 às 16:30.%0A%0ADigite *SOMENTE O NÚMERO* da opção desejada:%0A*1 - Comercial*%0A*2 - Entrega*%0A*3 - Pós Vendas*%0A*4 - Financeiro*",
 
     //Grupos
     'COMERCIAL' => '3',
     'Entregas' => '5',
     'Pos Vendas' => '7',
+    'Financeiro' => '9',
 
 
 );
@@ -44,7 +45,7 @@ function menu_ura($mensagem = NULL, $atual = NULL, $metodos, $conn, $config)
                 'BOT_ID=' . $config['BOT_ID'] . '&',
                 'CLIENT_ID=' . $config['CLIENT_ID'] . '&',                            
                 'DIALOG_ID=chat' . $_REQUEST['data']['PARAMS']['CHAT_ID'] . '&',
-                'MESSAGE=Alguêm da equipe comercial já ira atender você'
+                'MESSAGE=Estamos direcionando para nossa equipe comercial... ☕😊%0A%0ALembrando que o nosso horário de atendimento é de segunda à sexta-feira, das 08:30 às 16:30.%0A%0AVocê também pode nos contatar através do e-mail atendimento@cpapstore.com.br'
                 
                 
                 ));
@@ -124,6 +125,34 @@ function menu_ura($mensagem = NULL, $atual = NULL, $metodos, $conn, $config)
 
             break;
             
+        case '4':
+
+            controler_bot($config['URL'], $metodos['ENVIAR'], array(
+
+                'BOT_ID=' . $config['BOT_ID'] . '&',
+                'CLIENT_ID=' . $config['CLIENT_ID'] . '&',                            
+                'DIALOG_ID=chat' . $_REQUEST['data']['PARAMS']['CHAT_ID'] . '&',
+                'MESSAGE=Alguêm do financeiro já ira atender você'
+                
+                
+                ));
+                
+                controler_bot($config['URL'], $metodos['TRANSFERIR'], array(
+                
+                'BOT_ID=' . $config['BOT_ID'] . '&',
+                'CLIENT_ID=' . $config['CLIENT_ID'] . '&',                            
+                'CHAT_ID=' . $_REQUEST['data']['PARAMS']['CHAT_ID'] . '&',
+                'LEAVE=Y'  . '&',
+                'QUEUE_ID=' . $config['Financeiro']
+                
+                )); 
+
+                $query = "DELETE FROM conversas WHERE CHAT_ID = " . $_REQUEST['data']['PARAMS']['CHAT_ID'];    
+    
+                $result = mysqli_query($conn, $query);
+
+
+            break;
                 
 
         case '9':
