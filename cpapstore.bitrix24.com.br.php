@@ -74,7 +74,7 @@ function menu_ura($mensagem = NULL, $atual = NULL, $metodos, $conn, $config)
                 'BOT_ID=' . $config['BOT_ID'] . '&',
                 'CLIENT_ID=' . $config['CLIENT_ID'] . '&',                            
                 'DIALOG_ID=chat' . $_REQUEST['data']['PARAMS']['CHAT_ID'] . '&',
-                'MESSAGE=Alguêm da equipe de entregas já ira atender você'
+                'MESSAGE=Estamos direcionando para nossa equipe de entregas... ☕😊%0A%0ALembrando que o nosso horário de atendimento é de segunda à sexta-feira, das 08:30 às 16:30.%0A%0AVocê também pode nos contatar através do e-mail atendimento@cpapstore.com.br'
                 
                 
                 ));
@@ -103,8 +103,8 @@ function menu_ura($mensagem = NULL, $atual = NULL, $metodos, $conn, $config)
                 'BOT_ID=' . $config['BOT_ID'] . '&',
                 'CLIENT_ID=' . $config['CLIENT_ID'] . '&',                            
                 'DIALOG_ID=chat' . $_REQUEST['data']['PARAMS']['CHAT_ID'] . '&',
-                'MESSAGE=Alguêm de pós vendas já ira atender você'
-                
+                'MESSAGE=Estamos direcionando para nossa equipe de pós vendas... ☕😊%0A%0ALembrando que o nosso horário de atendimento é de segunda à sexta-feira, das 08:30 às 16:30.%0A%0AVocê também pode nos contatar através do e-mail atendimento@cpapstore.com.br'
+                   
                 
                 ));
                 
@@ -132,8 +132,8 @@ function menu_ura($mensagem = NULL, $atual = NULL, $metodos, $conn, $config)
                 'BOT_ID=' . $config['BOT_ID'] . '&',
                 'CLIENT_ID=' . $config['CLIENT_ID'] . '&',                            
                 'DIALOG_ID=chat' . $_REQUEST['data']['PARAMS']['CHAT_ID'] . '&',
-                'MESSAGE=Alguêm do financeiro já ira atender você'
-                
+                'MESSAGE=Estamos direcionando para nossa equipe financeira... ☕😊%0A%0ALembrando que o nosso horário de atendimento é de segunda à sexta-feira, das 08:30 às 16:30.%0A%0AVocê também pode nos contatar através do e-mail atendimento@cpapstore.com.br'
+                  
                 
                 ));
                 
