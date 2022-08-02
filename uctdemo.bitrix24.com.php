@@ -127,7 +127,19 @@ function menu_ura($mensagem = NULL, $atual = NULL, $metodos, $conn, $config, $ro
                                 'BOT_ID=' . $config['BOT_ID'] . '&',
                                 'CLIENT_ID=' . $config['CLIENT_ID'] . '&',                            
                                 'DIALOG_ID=chat' . $_REQUEST['data']['PARAMS']['CHAT_ID'] . '&',
-                                'MESSAGE=Cesta de serviços, pix e tag de pedágio GRÁTIS, desconto na conta de luz de até 12%, cartão de crédito sem anuidade e sua empresa ainda pode ter CRÉDITO APROVADO mediante solicitação.'
+                                'MESSAGE=Perfeito! Em breve, um de nossos atendentes entrará em contato para dar início já à abertura da sua conta e garantir tudo isso e muito mais para a sua empresa. 😊'
+                                
+                                
+                            ));
+
+                            sleep(0.5);
+                            
+                            controler_bot($config['URL'], $metodos['ENVIAR'], array(
+    
+                                'BOT_ID=' . $config['BOT_ID'] . '&',
+                                'CLIENT_ID=' . $config['CLIENT_ID'] . '&',                            
+                                'DIALOG_ID=chat' . $_REQUEST['data']['PARAMS']['CHAT_ID'] . '&',
+                                'MESSAGE=Ou então, entre em contato agora pelo nosso WhatsApp através do link: wa.me/552139008295'
                                 
                                 
                             ));
