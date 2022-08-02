@@ -36,8 +36,10 @@ if($_REQUEST['event'] != 'ONIMBOTJOINCHAT'){
         $ura = mysqli_fetch_row($result);   
     
         //file_put_contents(__DIR__ . '/imbot.log', "\n" . 'Batata', FILE_APPEND);
-    
+    // mb-finance.bitrix24.com.br
         if($_REQUEST['data']['USER']['IS_EXTRANET'] == 'Y'){
+
+            
     
             menu_ura($_REQUEST['data']['PARAMS']['MESSAGE'], $ura[3] , $metodos, $conn, $config);
     

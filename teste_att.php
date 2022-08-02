@@ -2,9 +2,9 @@
 
 $config = array(
 
-    'BOT_ID' => '2449',
-    'CLIENT_ID' => 'iv13x1orl1cndat3czkl1om2h9a57i65',
-    'URL' => 'https://uctbrasil.bitrix24.com.br/rest/235/22h13288etctks0m/',
+    'BOT_ID' => '2205',
+    'CLIENT_ID' => 'v6sxch44gkh4er2rln7bodfxoly0ywl8',
+    'URL' => 'https://uctbrasil.bitrix24.com.br/rest/977/5lm7ejrd0ing71gv/',
 
     //Uras do sistema
     'URA' => "Bem vindo a UC Technology.%0A%0ASelecione a opção desejada:%0A1 - Comercial%0A2 - Financeiro%0A3 - Suporte Técnico",
@@ -21,55 +21,30 @@ $config = array(
 
 );
 
-
-
 function menu_ura($mensagem = NULL, $atual = NULL, $metodos, $conn, $config)
 {
 
-   
-    if(mb_strpos($mensagem, '=== Outgoing message, author: Bitrix24 (')){
+    if(str_contains($mensagem, 'Outgoing message, author: Bitrix24')){
         
-        //Captura do nome do usuário que enviou a mensagem pelo Wazzup
         $pos = strpos($mensagem, '(');
         $nome = substr($mensagem, ($pos + 1), -1);
         $pos = strpos($nome, ')');
         $nome = substr($nome, 0, $pos);
-        //--------------------------------
 
-        file_put_contents(__DIR__ . '/imbot.log', "\n" . 'Mensagem do Wazzup detectada com o nome: ' . $nome , FILE_APPEND);
-        
-        $IDUSER = getUserByName($config['SRC_USER'], 'user.search.json?', $nome);
-
-        file_put_contents(__DIR__ . '/imbot.log', "\n" . "ID: $IDUSER encontrado!", FILE_APPEND);
+        $IDUSER = getUserByName($config['SRC_USER'], $metodos['PESQUISARUSUARIO'], $nome);
 
         controler_bot($config['URL'], $metodos['TRANSFERIR'], array(
                 
             'BOT_ID=' . $config['BOT_ID'] . '&',
-            'CLIENT_ID=' . $config['CLIENT_ID'] . '&',
+            'CLIENT_ID=' . $config['CLIENT_ID'] . '&',                            
             'CHAT_ID=' . $_REQUEST['data']['PARAMS']['CHAT_ID'] . '&',
             'LEAVE=Y'  . '&',
             'TRANSFER_ID=' . $IDUSER
             
-        ));
-
-        return true;
-
-    }
-    if(mb_strpos($mensagem, '=== Outgoing message, author: Bitrix24')){
-
-        controler_bot($config['URL'], $metodos['TRANSFERIR'], array(
-                
-            'BOT_ID=' . $config['BOT_ID'] . '&',
-            'CLIENT_ID=' . $config['CLIENT_ID'] . '&',
-            'CHAT_ID=' . $_REQUEST['data']['PARAMS']['CHAT_ID'] . '&',
-            'LEAVE=Y'  . '&',
-            'TRANSFER_ID=599'
-            
-        ));
-
-        return true;
-  
+            )); 
     }else{
+
+
         if (!is_null($atual)) {
 
             $navegador = $atual;
@@ -273,6 +248,6 @@ function menu_ura($mensagem = NULL, $atual = NULL, $metodos, $conn, $config)
         }
     }
 
-}
+   
 
-?>
+}
