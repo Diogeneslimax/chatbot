@@ -1,5 +1,7 @@
 <?php
 
+use LDAP\Result;
+
 function controler_bot($url = NULL, $metodo = NULL, $parametros){
 
 if(($metodo != NULL) && is_array($parametros) && ($url != NULL)){
@@ -35,3 +37,22 @@ function getUserByName($url = NULL, $metodo = NULL, $name){
     return $resultado[0]->ID;
 }
 
+function updateUra($row, $msg, $conn){
+
+    file_put_contents(__DIR__ . '/imbot.log', "\n" . $row['URA'] . $msg . ";", FILE_APPEND);
+
+    $query = "UPDATE conversas SET `URA` = " . "'" . $row['URA'] . $msg . ";" . "'". " WHERE `ID` = '" . $row['ID'] . "'";    
+    
+    return mysqli_query($conn, $query);
+}
+
+
+function popUra($row, $conn){
+    
+    // $ura = array_pop($row['URA']);
+    $ura = substr($row['URA'], 0, -4);
+    $query = "UPDATE conversas SET `URA` = " . "'" . $ura . ";" . "'". " WHERE `ID` = '" . $row['ID'] . "'";    
+    
+    return mysqli_query($conn, $query);
+
+}

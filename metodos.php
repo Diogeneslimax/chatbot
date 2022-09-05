@@ -6,4 +6,6 @@ $metodos = array(
     'SAIR' => 'imbot.chat.leave.json?',
     'TRANSFERIR' => 'imopenlines.operator.transfer.json?',
     'PESQUISARUSUARIO' => 'user.search.json?',
+    'CRIARLEAD' => 'crm.lead.add.json?',
+
 );

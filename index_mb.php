@@ -12,7 +12,7 @@ if($_REQUEST['event'] != 'ONIMBOTJOINCHAT'){
     
     include('funcoes.php');
     
-    $query = "SELECT * FROM conversas WHERE CHAT_ID = '" . $_REQUEST['data']['PARAMS']['TO_CHAT_ID'] . "'AND URL = '" . $_REQUEST['auth']['domain'] ."'";
+    $query = "SELECT * FROM conversas WHERE CHAT_ID = '" . $_REQUEST['data']['PARAMS']['TO_CHAT_ID'] . "'AND URL = '" . $_REQUEST['auth']['domain'] . "'";
     
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_assoc($result);
@@ -20,7 +20,7 @@ if($_REQUEST['event'] != 'ONIMBOTJOINCHAT'){
 
     if(mysqli_num_rows($result) <= 0){
     
-        $query = "INSERT INTO conversas(`CHAT_ID`, `URL`) VALUES('" . $_REQUEST['data']['PARAMS']['CHAT_ID'] . "' ," . "'" . $_REQUEST['auth']['domain'] . "')";    
+        $query = "INSERT INTO conversas(`CHAT_ID`, `URL`, `URA`) VALUES('" . $_REQUEST['data']['PARAMS']['CHAT_ID'] . "' ," . "'" . $_REQUEST['auth']['domain'] . "'". ", '0;')";    
     
         $result = mysqli_query($conn, $query);
     
