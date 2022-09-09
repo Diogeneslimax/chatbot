@@ -1,5 +1,5 @@
 <?php
-    $servidor = "localhost:3306";
+    $servidor = "localhost:3001";
     $usuario = "root";
     $senha = "O1X0il345!w-!Ly@";
     $dbname = "chat-bot";

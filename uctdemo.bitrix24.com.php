@@ -115,6 +115,10 @@ function menu_ura($mensagem = NULL, $atual = NULL, $metodos, $conn, $config, $ro
         foreach ($ura_db as $key => $value) {
             // if (array_key_exists($value, $msg)) {
                 $msg = $msg[$value];
+
+                $mensagem = '';
+                
+        
             // } else {
             //     controler_bot($config['URL'], $metodos['ENVIAR'], array(
 
@@ -129,9 +133,9 @@ function menu_ura($mensagem = NULL, $atual = NULL, $metodos, $conn, $config, $ro
             // }
         }
 
-        $mensagem = '';
         file_put_contents(__DIR__ . '/imbot.log', "\n" . $msg['msg'], FILE_APPEND);
-        $mensagem = explode('~', $msg['msg']);
+        $mensagem = explode ('~', $msg ('msg'));
+        
 
         foreach ($mensagem as $key => $value) {
 
